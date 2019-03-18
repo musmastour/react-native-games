@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
-
+import GameInfos from './GameInfos'
 
 export default class GameList extends React.Component {
 
@@ -34,7 +34,7 @@ export default class GameList extends React.Component {
             <View style={styles.container}>
             {
                 this.state.games.map((item, index) => (
-                    <TouchableOpacity key={item.id} style={styles.itemContainer}>
+                    <TouchableOpacity key={item.id} style={styles.itemContainer} onPress={() => this.props.navigation.navigate('GameInfos')}>
                         <Text style={styles.gameTitle}>{item.name}</Text>
                     </TouchableOpacity>
                 ))

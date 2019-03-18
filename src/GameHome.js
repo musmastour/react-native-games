@@ -1,17 +1,33 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
-import GameList from './src/GameList'
-import GameInfos from './src/GameInfos'
-import GameHome from './src/GameHome'
-import GameNavigation from './navigation/GameNavigation'
+import GameList from './GameList'
+import GameInfos from './GameInfos'
 import { Icon } from 'react-native-elements'
 import { createBottomTabNavigator, createAppContainer, createDrawerNavigator, createStackNavigator } from 'react-navigation'
 
-export default class App extends React.Component {
+
+export default class GameHome extends React.Component {
 
   render() {
     return (
-      <GameNavigation/>
+      <View style={styles.container}>
+        <View style={{margin: 30}}> 
+          
+          <View style={styles.titleContainer}>
+
+            <Icon name="gamepad" type='font-awesome' size={34} />
+            <Text style={styles.title}>Hello Games</Text>
+
+          </View>
+
+          <ScrollView style={styles.listContainer}>
+              <GameList navigation={this.props.navigation}/>
+          </ScrollView>
+
+          
+
+        </View>
+      </View>
     );
   }
 }

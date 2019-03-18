@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 
-
 export default class GameInfos extends React.Component {
 
     state = {
@@ -10,42 +9,15 @@ export default class GameInfos extends React.Component {
     }
 
     componentDidMount() {
-        this.getGamesList()
     }
 
-    async getGamesList() {
-        return await fetch('https://androidlessonsapi.herokuapp.com/api/game/list/')
-        .then((response) => response.json())
-        .then((responseJson) => {
-            console.log(responseJson)
-            this.setState({
-            games: responseJson,
-            isLoaded: true,
-            })
-        })
-        .catch((error) => {
-        console.error(error);
-        });
-    }
 
   render() {
-      if (this.state.isLoaded) {
-        return (
-            <View style={styles.container}>
-            {
-                this.state.games.map((item, index) => (
-                    <TouchableOpacity key={item.id} style={styles.itemContainer}>
-                        <Text style={styles.gameTitle}>{item.name}</Text>
-                    </TouchableOpacity>
-                ))
-            }
-            </View>
-        );}
-        else {
+     
             return (
                 <Text>Pas de données.</Text>
             )
-        }
+        
     }
 }
 

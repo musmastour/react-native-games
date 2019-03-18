@@ -34,7 +34,9 @@ export default class GameList extends React.Component {
             <View style={styles.container}>
             {
                 this.state.games.map((item, index) => (
-                    <TouchableOpacity key={item.id} style={styles.itemContainer} onPress={() => this.props.navigation.navigate('GameInfos')}>
+                    <TouchableOpacity key={item.id} style={styles.itemContainer} onPress={() => this.props.navigation.navigate('GameInfos', {
+                        game_id: item.id
+                    })}>
                         <Text style={styles.gameTitle}>{item.name}</Text>
                     </TouchableOpacity>
                 ))

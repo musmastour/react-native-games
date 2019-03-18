@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Linking } from 'react-native';
 import { Icon } from 'react-native-elements'
 
 export default class GameInfos extends React.Component {
@@ -55,7 +55,12 @@ export default class GameInfos extends React.Component {
                     </Text>
                 </View>
 
-                <TouchableOpacity style={styles.descriptionContainer}>
+                <TouchableOpacity style={styles.descriptionContainer} onPress={() => {
+                        Linking.openURL(this.state.details.url).then((url) => {
+                            if (url) {
+                              console.log('Initial url is: ' + url);
+                            }
+                          }).catch(err => console.error('An error occurred', err));}}>
                     <Text style={styles.textMoreDetails}>More details</Text>
                     <Icon name="question-circle" type='font-awesome' size={30} />
                 </TouchableOpacity>
